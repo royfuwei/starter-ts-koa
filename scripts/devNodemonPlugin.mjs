@@ -1,43 +1,50 @@
-// devNodemonPlugin.js
 import { spawn } from 'node:child_process';
+
+let nodemonProcess = null;
 
 const devNodemonFn = (options = {}) => {
   const { entry = 'dist/main.js' } = options;
+
+  if (nodemonProcess) {
+    // nodemon 本來就會自動 reload，不要重複 spawn
+    return;
+  }
 
   // 執行 nodemon 的方式
   const nodemonArgs = [
     // '--watch', 'dist',
     '--ext',
-    'js',
+    'js ts json',
     '--exec',
     `\"node ${entry}\"`,
   ];
 
-  // 啟動 nodemon 進程
-  const child = spawn('npx', ['nodemon', ...nodemonArgs], {
+  nodemonProcess = spawn('npx', ['nodemon', ...nodemonArgs], {
     stdio: 'inherit',
     shell: true,
   });
 
-  child.on('close', (code) => {
+  nodemonProcess.on('close', (code) => {
     console.log(`nodemon exited with code ${code}`);
+    nodemonProcess = null;
   });
 };
 
 export function devNodemonPlugin(options = {}) {
   const { type } = options;
   const name = type ? `${type}-dev-nodemon-plugin` : 'dev-nodemon-plugin';
+  let started = false;
   switch (type) {
     case 'esbuild':
       return {
         name,
         setup(build) {
-          if (build.errors && build.errors.length) {
-            console.error('Build errors:', build.errors);
-            return;
-          }
           build.onEnd(() => {
-            devNodemonFn();
+            if (!started) {
+              started = true;
+              devNodemonFn();
+              started = false;
+            }
           });
         },
       };
@@ -45,8 +52,10 @@ export function devNodemonPlugin(options = {}) {
       return {
         name,
         writeBundle() {
-          if (this.meta.watchMode) {
+          if (this.meta.watchMode && !started) {
+            started = true;
             devNodemonFn();
+            started = false;
           }
         },
       };
