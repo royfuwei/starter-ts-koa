@@ -14,7 +14,7 @@ const devNodemonFn = (options = {}) => {
   const nodemonArgs = [
     // '--watch', 'dist',
     '--ext',
-    'js ts json',
+    'js',
     '--exec',
     `\"node ${entry}\"`,
   ];
