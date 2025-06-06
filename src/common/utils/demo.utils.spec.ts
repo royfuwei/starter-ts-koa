@@ -1,4 +1,4 @@
-import DemoUtils from '@/utils/demo.utils';
+import DemoUtils from '@/common/utils/demo.utils';
 
 describe('DemoUtils', () => {
   it('should return the correct value', () => {
