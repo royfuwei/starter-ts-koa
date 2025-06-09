@@ -5,6 +5,7 @@ import { join } from 'path';
 type PackageJsonType = {
   name: string;
   version: string;
+  description: string;
   [key: string]: string | number | boolean | undefined;
 };
 
@@ -26,6 +27,7 @@ const configs = {
   tz: process.env.TZ ?? null,
   name: pkg.name ?? process.env.APP_NAME,
   version: pkg.version,
+  description: pkg.description ?? '',
 };
 
 export { configs };

@@ -12,8 +12,8 @@ import 'reflect-metadata';
 import { server } from '@/server';
 
 const main = async () => {
-  await new Promise((resolve) => setTimeout(resolve, 5000));
   const { httpServer } = server();
+  await new Promise((resolve) => setTimeout(resolve, 5000));
 
   const closeProcesses = async (code = 1) => {
     await new Promise<void>((resolve) => {

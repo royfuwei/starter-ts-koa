@@ -2,8 +2,12 @@ import bodyParser from '@koa/bodyparser';
 import cors from '@koa/cors';
 import koa from 'koa';
 import { RoutingControllersOptions, useKoaServer } from 'routing-controllers';
+import { buildApiDocs } from './openapi';
 
-export function initKoaApp(routingControllerOptions: RoutingControllersOptions = {}) {
+export function initKoaApp(
+  routingControllerOptions: RoutingControllersOptions = {},
+  isApiDocEnabled = true,
+) {
   const app = new koa();
   useKoaServer(app, routingControllerOptions);
 
@@ -23,6 +27,8 @@ export function initKoaApp(routingControllerOptions: RoutingControllersOptions =
       encoding: 'utf-8',
     }),
   );
+
+  buildApiDocs(app, routingControllerOptions, isApiDocEnabled);
 
   return app;
 }
