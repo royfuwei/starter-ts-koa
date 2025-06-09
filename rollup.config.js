@@ -3,6 +3,7 @@ import typescript from 'rollup-plugin-typescript2';
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import { rollupDevNodemonPlugin } from './scripts/devNodemonPlugin.mjs';
+import { rollupExternalWatch } from './scripts/rollupExternalWatch.mjs';
 // import terser from '@rollup/plugin-terser';
 
 // `npm run build` -> `production` is true
@@ -12,6 +13,7 @@ const production = !process.env.ROLLUP_WATCH;
 export default {
   input: 'src/main.ts',
   plugins: [
+    rollupExternalWatch(),
     json(),
     typescript({ tsconfig: './tsconfig.rollup.json' }),
     resolve({
