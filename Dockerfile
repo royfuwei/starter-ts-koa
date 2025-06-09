@@ -12,8 +12,8 @@ RUN npm install -g pnpm@10
 COPY . /app
 WORKDIR /app
 
-# FROM base AS prod-deps
-# RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --prod --frozen-lockfile
+FROM base AS prod-deps
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --prod --frozen-lockfile
 
 FROM base AS build
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install  --frozen-lockfile
@@ -35,7 +35,7 @@ RUN ln -sf /usr/share/zoneinfo/$TZ /etc/localtime \
   && echo $TZ > /etc/timezone
 
 WORKDIR /app
-# COPY --from=prod-deps /app/node_modules /app/node_modules
+COPY --from=prod-deps /app/node_modules /app/node_modules
 COPY --from=build /app/dist /app/dist
 COPY --from=build /app/package.json /app
 EXPOSE 3000
