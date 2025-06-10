@@ -403,3 +403,6 @@ test-results*
 
 .env.*
 !.env.example
+
+docs/.vitepress/dist
+docs/.vitepress/cache
