@@ -1,8 +1,8 @@
-import demoUtils from '@/common/utils/demo.utils';
+import { getDemoValue } from '@/common/utils';
 
 export class DemoUseCase {
   getDemoValue(): string {
-    const data = demoUtils.getDemoValue();
+    const data = getDemoValue();
     return data;
   }
 }
