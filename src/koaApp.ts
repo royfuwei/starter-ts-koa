@@ -1,4 +1,4 @@
-import bodyParser from '@koa/bodyparser';
+import { bodyParser } from '@koa/bodyparser';
 import cors from '@koa/cors';
 import koa from 'koa';
 import { RoutingControllersOptions, useKoaServer } from 'routing-controllers';
