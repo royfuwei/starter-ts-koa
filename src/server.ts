@@ -1,7 +1,7 @@
 import { RoutingControllersOptions, useContainer } from 'routing-controllers';
 import { initKoaApp } from '@/koaApp';
 import { iocAdapter } from '@/ioc/iocAdapter';
-import * as _indexControllers from '@/controllers';
+import * as _indexControllers from '@/delivery/controllers';
 import { container } from 'tsyringe';
 import { IocRegistryApp } from '@/ioc/ioc.register.app';
 
@@ -14,6 +14,8 @@ export function server() {
 
   const routingControllerOptions: RoutingControllersOptions = {
     defaultErrorHandler: false,
+    classTransformer: true,
+    validation: true,
     controllers: [...controllers],
   };
 
