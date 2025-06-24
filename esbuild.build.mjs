@@ -2,6 +2,7 @@
 import esbuild from 'esbuild';
 import path from 'path';
 import fs from 'fs';
+import esbuildPluginTsc from 'esbuild-plugin-tsc';
 
 const distDir = 'dist';
 const inputFile = 'src/main.ts';
@@ -32,7 +33,7 @@ async function buildApp() {
     // target: ['es2020'],
     format: 'cjs',
     // target: ['node14'],
-    plugins: [],
+    plugins: [esbuildPluginTsc()],
   });
 }
 
