@@ -20,7 +20,7 @@ export class ApiResDataDTO<TData> implements ApiResData<TData> {
   constructor(params: ApiResDataParams<TData>) {
     this.success = params.success;
     this.status = params.status;
-    this.data = params.data;
+    this.data = params.data == undefined ? null : params.data;
   }
   @JSONSchema({ description: '請求結果' })
   @IsBoolean()
@@ -42,7 +42,7 @@ export class ApiResPaginatedDTO<TData> implements ApiResPaginated<TData> {
   constructor(params: ApiResPaginatedParams<TData>) {
     this.success = params.success;
     this.status = params.status;
-    this.data = params.data;
+    this.data = params.data == undefined ? [] : params.data;
     this.total = params.total;
   }
   @JSONSchema({ description: '請求結果' })
