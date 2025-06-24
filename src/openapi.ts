@@ -44,6 +44,7 @@ export function getSwaggerSpec(routingControllerOptions?: RoutingControllersOpti
       const msg: string = err.message; // ok
       const errInfo = `[DOC][getSwaggerSpec] error: ${msg}`;
       console.error(errInfo);
+      console.error(err);
     }
     return null;
   }
