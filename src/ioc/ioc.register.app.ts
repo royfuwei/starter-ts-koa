@@ -1,5 +1,5 @@
 import { BaseIocRegistry } from '@/common/abstract/base.registry';
-import { IAppService } from '@/modules/app/app.types';
+import { IAppService } from '@/modules/app/types';
 import { App2Service } from '@/modules/app/app2.service';
 // import { AppService } from '@/modules/app/app.service';
 import { DependencyContainer } from 'tsyringe';
@@ -12,7 +12,6 @@ export class IocRegistryApp extends BaseIocRegistry<DependencyContainer> {
   }
 
   register(): void {
-    console.log('Registering App services...');
     this.container.registerSingleton<IAppService>(INJECT_SVC_APP_SERVICE, App2Service);
   }
 }
