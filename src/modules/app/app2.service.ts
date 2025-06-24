@@ -1,10 +1,9 @@
-import { IAppService } from './app.types';
+import { BaseAppService } from './base';
 
-export class App2Service implements IAppService {
-  getAppInfo() {
+export class App2Service extends BaseAppService {
+  getAppData() {
     return {
       message: 'App2 is running smoothly',
-      status: 'healthy',
     };
   }
 }
