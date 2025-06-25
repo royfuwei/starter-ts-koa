@@ -1,6 +1,6 @@
 import * as Koa from 'koa';
-import { ApiResError } from '../../utils';
-import { HttpException } from '../exceptions/http.exception';
+import { ApiResError } from '@/common/types';
+import { HttpException } from '@/common/exceptions';
 import { Logger } from 'winston';
 
 export const KoaLoggerHttpErrorMiddleware = (logger?: Logger) => {

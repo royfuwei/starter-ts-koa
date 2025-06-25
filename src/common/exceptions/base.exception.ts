@@ -1,4 +1,4 @@
-import { EnumErrorCode } from '../enums/errorCode.enum';
+import { EnumErrorCode } from '@/common/enums';
 
 export class BaseException extends Error {
   protected _errorCode: EnumErrorCode = EnumErrorCode.BASE_ERROR;
