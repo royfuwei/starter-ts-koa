@@ -1,5 +1,5 @@
 import { OpenAPI } from 'routing-controllers-openapi';
-import { TDataType } from './types';
+import { TDataType } from '@/common/types/api.type';
 
 export const ApiResPaginatedSchema = <TModel extends TDataType<any>>(
   model: TModel,

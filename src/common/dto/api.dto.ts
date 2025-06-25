@@ -13,7 +13,7 @@ import {
   ApiResError,
   ApiResPaginated,
   ApiResPaginatedParams,
-} from './types';
+} from '@/common/types';
 import { JSONSchema } from 'class-validator-jsonschema';
 
 export class ApiResDataDTO<TData> implements ApiResData<TData> {
