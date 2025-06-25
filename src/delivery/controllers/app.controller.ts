@@ -1,10 +1,10 @@
-import { ApiResDataDTO, ApiResErrorDTO, ApiResPaginatedDTO } from '@/common/utils';
+import { ApiResDataDTO, ApiResErrorDTO, ApiResPaginatedDTO } from '@/utils';
 import { Body, Get, HeaderParam, JsonController, Post } from 'routing-controllers';
 import {
   ApiResDataListSchema,
   ApiResDataSchema,
   ApiResPaginatedSchema,
-} from '@/common/utils/api/decorator';
+} from '@/utils/api/decorator';
 import { AppDataDTO, AppInfoDTO, AppPostBodyDTO } from '@/modules/app/dto';
 import { AppData, AppInfo } from '@/modules/app/types';
 import { AppUseCase } from '@/modules/app/app.usecase';

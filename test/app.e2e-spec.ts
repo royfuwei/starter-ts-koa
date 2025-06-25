@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { getDemoValue } from '@/common/utils';
+import { getDemoValue } from '@/utils';
 
 describe('Main e2e', () => {
   it('should be true', () => {

@@ -1,5 +1,5 @@
 import * as Koa from 'koa';
-import { ApiResError } from '../utils';
+import { ApiResError } from '../../utils';
 import { HttpException } from '../exceptions/http.exception';
 import { Logger } from 'winston';
 

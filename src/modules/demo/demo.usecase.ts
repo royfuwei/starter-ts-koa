@@ -1,4 +1,4 @@
-import { getDemoValue } from '@/common/utils';
+import { getDemoValue } from '@/utils';
 
 export class DemoUseCase {
   getDemoValue(): string {
