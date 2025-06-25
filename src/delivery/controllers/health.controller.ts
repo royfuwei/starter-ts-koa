@@ -1,5 +1,7 @@
+import { HealthInfoDTO } from '@/modules/health/dto';
 import { HealthUseCase } from '@/modules/health/health.usecase';
 import { Get, JsonController } from 'routing-controllers';
+import { ResponseSchema } from 'routing-controllers-openapi';
 import { inject, injectable } from 'tsyringe';
 
 @JsonController()
@@ -11,6 +13,7 @@ export class HealthController {
   ) {}
 
   @Get('/health')
+  @ResponseSchema(HealthInfoDTO)
   getHealth() {
     return this.healthUseCase.getHealthStatus();
   }

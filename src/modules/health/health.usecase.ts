@@ -1,5 +1,5 @@
 import { configs } from '@/configs';
-import { EnumHealthStatus, HealthInfo } from './health.types';
+import { EnumHealthStatus, HealthInfo } from './types';
 
 export class HealthUseCase {
   getHealthStatus(): HealthInfo {
