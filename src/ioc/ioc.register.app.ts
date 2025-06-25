@@ -1,4 +1,4 @@
-import { BaseIocRegistry } from '@/common/abstract/base.registry';
+import { BaseIocRegistry } from '@/common/utils/ioc';
 import { IAppService } from '@/modules/app/types';
 import { App2Service } from '@/modules/app/app2.service';
 // import { AppService } from '@/modules/app/app.service';
