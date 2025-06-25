@@ -1,4 +1,4 @@
-import { ApiResDataDTO, ApiResPaginatedDTO } from '@/common/utils';
+import { ApiResDataDTO, ApiResErrorDTO, ApiResPaginatedDTO } from '@/common/utils';
 import { Body, Get, HeaderParam, JsonController, Post } from 'routing-controllers';
 import {
   ApiResDataListSchema,
@@ -10,8 +10,12 @@ import { AppData, AppInfo } from '@/modules/app/types';
 import { AppUseCase } from '@/modules/app/app.usecase';
 import { ResponseSchema } from 'routing-controllers-openapi';
 import { inject, injectable } from 'tsyringe';
+import httpStatus from 'http-status';
 
 @injectable()
+@ResponseSchema(ApiResErrorDTO, {
+  statusCode: httpStatus.BAD_REQUEST,
+})
 @JsonController('/app')
 export class AppController {
   constructor(
