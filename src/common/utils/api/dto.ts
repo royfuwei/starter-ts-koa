@@ -67,7 +67,7 @@ export class ApiResErrorDTO implements ApiResError {
   constructor(
     success: boolean,
     status: number,
-    errorCode: number,
+    errorCode: string,
     message: string,
     description?: string,
     path?: string,
@@ -93,8 +93,8 @@ export class ApiResErrorDTO implements ApiResError {
   status: number;
 
   @JSONSchema({ description: '錯誤碼' })
-  @IsNumber()
-  errorCode: number;
+  @IsString()
+  errorCode: string;
 
   @JSONSchema({ description: '錯誤訊息' })
   @IsString()

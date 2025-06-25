@@ -17,7 +17,7 @@ export type ApiResPaginated<T = any> = ApiResStatus & {
 };
 
 export type ApiResError = ApiResStatus & {
-  errorCode: number;
+  errorCode: string;
   message: string;
   description?: string;
   path?: string;
@@ -37,3 +37,5 @@ export type ApiResDataParams<TData> = {
   status: number;
   data: TData | TData[] | null;
 };
+
+export type ApiResErrorParams = ApiResError;
