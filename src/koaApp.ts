@@ -3,12 +3,15 @@ import cors from '@koa/cors';
 import koa from 'koa';
 import { RoutingControllersOptions, useKoaServer } from 'routing-controllers';
 import { buildApiDocs } from './openapi';
+import { KoaLoggerHttpErrorMiddleware } from './common/interceptors';
 
 export function initKoaApp(
   routingControllerOptions: RoutingControllersOptions = {},
   isApiDocEnabled = true,
 ) {
   const app = new koa();
+  app.use(KoaLoggerHttpErrorMiddleware());
+
   useKoaServer(app, routingControllerOptions);
 
   app.use(
