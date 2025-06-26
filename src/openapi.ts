@@ -6,6 +6,7 @@ import { getMetadataStorage } from 'class-validator';
 import { configs } from '@/configs';
 import koa from 'koa';
 import { koaSwagger } from 'koa2-swagger-ui';
+import Router from '@koa/router';
 
 /**
  *
@@ -73,5 +74,11 @@ export function buildApiDocs(
         },
       }),
     );
+
+    const router = new Router();
+    router.get('/', (ctx) => {
+      ctx.redirect('/api-docs');
+    });
+    app.use(router.routes());
   }
 }

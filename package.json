@@ -85,6 +85,7 @@
     "@types/koa": "^2.15.0",
     "@types/koa-bodyparser": "^4.3.12",
     "@types/koa__cors": "^5.0.0",
+    "@types/koa__router": "^12.0.4",
     "@types/supertest": "^6.0.2",
     "@vitest/coverage-istanbul": "^3.2.3",
     "@vitest/ui": "^3.2.3",
