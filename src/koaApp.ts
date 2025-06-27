@@ -1,5 +1,6 @@
 import { bodyParser } from '@koa/bodyparser';
 import cors from '@koa/cors';
+import logger from 'koa-logger';
 import koa from 'koa';
 import { RoutingControllersOptions, useKoaServer } from 'routing-controllers';
 import { buildApiDocs } from './openapi';
@@ -11,6 +12,8 @@ export function initKoaApp(
 ) {
   const app = new koa();
   app.use(KoaLoggerHttpErrorMiddleware());
+
+  app.use(logger());
 
   useKoaServer(app, routingControllerOptions);
 
